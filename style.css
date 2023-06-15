@@ -1,7 +1,35 @@
-.header{
-    color: white;
-    text-align: center;
+.header {
+  color: white;
+  text-align: center;
+  font-weight: 300px;
 }
-.background{
-    background-color: rgb(44, 44, 44);
+
+.background {
+  background-color: rgb(44, 44, 44);
+  color: white;
+}
+
+.movie-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-card {
+  display: inline-block;
+  padding: 20px;
+}
+
+.movie-poster {
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 2px silver;
+}
+.movie-title {
+  width: 200px; /* Adjust the width to match the image width */
+  margin-top: 10px; /* Add some spacing between the image and the text */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

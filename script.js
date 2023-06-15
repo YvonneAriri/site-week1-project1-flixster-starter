@@ -17,14 +17,36 @@ const fetchAndShowMovies = async () => {
     images.forEach((movie) => {
       // Create div element wrapper for each movie with a class name of "movie-card"
       const movieCard = document.createElement("div");
+
       movieCard.classList.add("movie-card");
+      // Create div element wrapper for each movie with a class name of "movie-title"
+      const movieTitle = document.createElement("div");
+
+      movieTitle.classList.add("movie-title");
+
+      const movieVote = document.createElement("div");
+
+      movieVote.classList.add("movie-votes");
+
       // Create img element for each movie with a class name of "movie-poster"
       const img = document.createElement("img");
+
       img.classList.add("movie-poster");
       img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-      // Append movie image to movieCard div element
+
+      movieTitle.textContent = movie.title;
+      movieVote.textContent = "⭐️ " + movie.vote_average;
+
+      //   // Append movie image to movieCard div element
       movieCard.appendChild(img);
-      // Append movie card to movieGrid div element
+
+      //Append movieRating to movieGrid div element
+      movieCard.appendChild(movieVote);
+
+      //Append movie title to movieCard div element
+      movieCard.appendChild(movieTitle);
+
+      //Append movie card to movieGrid div element
       movieGrid.appendChild(movieCard);
     });
   } catch (error) {
