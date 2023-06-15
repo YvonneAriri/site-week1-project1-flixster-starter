@@ -1,6 +1,12 @@
 // Assign movie grid HTML element to variable
 const movieGrid = document.getElementById("movie-grid");
+let page = 1;
 
+loadMoreButton.addEventListener("click", (event) => {
+  page += 1;
+  event.preventDefault();
+  fetchAndShowMovies();
+});
 /**
  * Get list of movies now playing in theatres by making a fetch request to moviedb API
  * with assigned API key
@@ -8,7 +14,7 @@ const movieGrid = document.getElementById("movie-grid");
 const fetchAndShowMovies = async () => {
   try {
     const API_KEY = "1659706dfae4865fb5606d1db53414cd";
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${page}`;
 
     const response = await fetch(url);
     const data = await response.json();
