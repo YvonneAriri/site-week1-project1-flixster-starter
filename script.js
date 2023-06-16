@@ -93,6 +93,7 @@ const showMovies = (movies) => {
     // Create div element wrapper for each movie with a class name of "movie-card"
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie-card");
+    movieCard.title = movie.title;
 
     // Create div element wrapper for each movie with a class name of "movie-title"
     const movieTitle = document.createElement("div");
