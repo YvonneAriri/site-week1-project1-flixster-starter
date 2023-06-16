@@ -129,5 +129,8 @@ const showMovies = (movies) => {
  */
 window.addEventListener("load", (event) => {
   event.preventDefault();
+
+  // When page loads, we want to focus search input
+  searchInput.focus();
   fetchMoviesFromAPI();
 });
