@@ -119,3 +119,16 @@
   font-variant: small-caps;
   margin-top: 20px;
 }
+
+.no-poster {
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px 2px silver;
+  background-image: url(https://img.icons8.com/?size=512&id=112919&format=png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -110,6 +110,13 @@ const showMovies = (movies) => {
     // Create img element for each movie with a class name of "movie-poster"
     const img = document.createElement("img");
     img.classList.add("movie-poster");
+
+    if (movie.poster_path == null) {
+      img.classList.remove("movie-poster");
+      img.classList.add("no-poster");
+      img.innerHTML = movie.title;
+    }
+
     img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
     img.alt = movie.title;
 
