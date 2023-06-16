@@ -70,14 +70,18 @@ const fetchMoviesFromAPI = async (url) => {
   }
 
   try {
+    // Hide load more until movies have been gotten from API
+    loadMoreButton.style.visibility = "hidden";
+
     const response = await fetch(url || defaultUrl);
 
     const data = await response.json();
     const movies = data.results;
-    console.log(movies);
 
     showMovies(movies);
-    loadMoreButton.style.visibility = "visible";
+    if (page < data.total_pages) {
+      loadMoreButton.style.visibility = "visible";
+    }
   } catch (error) {
     // Handle any errors that occur during the fetch request
     console.log(error);

@@ -52,6 +52,7 @@
   border: none;
   border-radius: 12px;
   visibility: hidden;
+  cursor: pointer;
   color: white;
   background-color: burlywood;
   padding: 10px;
@@ -102,6 +103,7 @@
 #close-search-btn {
   border-radius: 12px;
   font-size: 24px;
+  cursor: pointer;
   color: "red";
 }
 
@@ -111,6 +113,7 @@
   font-weight: bold;
   font-size: medium;
   border: 0;
+  cursor: pointer;
   border-radius: 12px;
   padding: 10px 15px;
   font-variant: small-caps;
