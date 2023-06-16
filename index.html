@@ -4,13 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body class="background">
-    <h1 class="header">Flixster</h1>
-    <!-- <input type="text" placeholder="Search here" />
-    <button>submit</button> -->
+    <h1 class="header">🍿Flixster</h1>
+    <div class="search">
+      <input type="text" placeholder="Search movies here" id="search-input" />
+      <button id="close-search-btn">
+        <i class="fa fa-close" style="color: burlywood"></i>
+      </button>
+    </div>
+    <div class="move">
+      <button id="submit">Submit</button>
+    </div>
+
+    <p id="section-title">Now Playing</p>
     <div id="movie-grid"></div>
-    <button id="loadMoreButton">load more</button>
+    <div class="container">
+      <button id="load-more-movies-btn">Load more</button>
+    </div>
 
     <script src="script.js"></script>
   </body>
