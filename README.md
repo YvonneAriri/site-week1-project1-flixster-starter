@@ -40,7 +40,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://yvonneariri.gi
 
 ### Walkthrough Video
 
-![Walkthrough](https://github.com/YvonneAriri/giphy_lab/assets/102451432/26119639-1648-4f7e-840d-74986fd4add4)
+![Walkthrough](https://github.com/YvonneAriri/giphy_lab/assets/102451432/ae65c4f7-761e-4d48-8e84-38b4bb6290a3)
 
 ### Reflection
 
