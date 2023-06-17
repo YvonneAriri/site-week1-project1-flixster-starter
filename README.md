@@ -42,6 +42,8 @@ Deployed Application (optional): [Flixster Deployed Site](https://yvonneariri.gi
 
 ![Walkthrough](https://github.com/YvonneAriri/giphy_lab/assets/102451432/ae65c4f7-761e-4d48-8e84-38b4bb6290a3)
 
+Link to video: https://youtu.be/0Qv5TAiWWPk
+
 ### Reflection
 
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
