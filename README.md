@@ -40,9 +40,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://yvonneariri.gi
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+![Walkthrough](https://github.com/YvonneAriri/giphy_lab/assets/102451432/26119639-1648-4f7e-840d-74986fd4add4)
 
 ### Reflection
 
