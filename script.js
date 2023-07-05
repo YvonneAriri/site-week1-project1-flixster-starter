@@ -2,27 +2,27 @@
 const API_KEY = "1659706dfae4865fb5606d1db53414cd";
 
 // Store genres in array instead of making multiple calls to API
-const genres = [
-  { id: 28, name: "Action" },
-  { id: 12, name: "Adventure" },
-  { id: 16, name: "Animation" },
-  { id: 35, name: "Comedy" },
-  { id: 80, name: "Crime" },
-  { id: 99, name: "Documentary" },
-  { id: 18, name: "Drama" },
-  { id: 10751, name: "Family" },
-  { id: 14, name: "Fantasy" },
-  { id: 36, name: "History" },
-  { id: 27, name: "Horror" },
-  { id: 10402, name: "Music" },
-  { id: 9648, name: "Mystery" },
-  { id: 10749, name: "Romance" },
-  { id: 878, name: "Science Fiction" },
-  { id: 10770, name: "TV Movie" },
-  { id: 53, name: "Thriller" },
-  { id: 10752, name: "War" },
-  { id: 37, name: "Western" },
-];
+const genres = {
+  28: "Action",
+  12: "Adventure",
+  16: "Animation",
+  35: "Comedy",
+  80: "Crime",
+  99: "Documentary",
+  18: "Drama",
+  10751: "Family",
+  14: "Fantasy",
+  36: "History",
+  27: "Horror",
+  10402: "Music",
+  9648: "Mystery",
+  10749: "Romance",
+  878: "Science Fiction",
+  10770: "TV Movie",
+  53: "Thriller",
+  10752: "War",
+  37: "Western",
+};
 
 // Assign movie grid HTML element to variable
 const movieGrid = document.getElementById("movie-grid");
@@ -34,11 +34,14 @@ const closeModalButton = document.getElementById("close-modal-btn");
 const loadMoreButton = document.getElementById("load-more-movies-btn");
 
 let page = 1;
-let searchQuery = null;
+let searchQuery = null; // this is what stores the user input
 
 closeModalButton.addEventListener("click", (event) => {
   event.preventDefault();
-
+  //the event parameter represent the event object and provides information
+  //the event  such a s target element and any associated data
+  // event.preventDefault();
+  //it lets you control and decide what happens when an event occurs
   hideMovieDetails();
 });
 
@@ -46,14 +49,17 @@ closeSearchButton.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (searchQuery != null) {
-    searchInput.value = "";
-    searchQuery = null;
-    page = 1;
-    movieGrid.innerHTML = "";
+    // if the query is not empty
+    searchInput.value = ""; // set the value of the search input to null
+    searchQuery = null; // it sets the searhcQuery variable to null
+    page = 1; // it takes it back to page 1
+    movieGrid.innerHTML = ""; //clears the content of the movie grid removing
+    //any previous displayed movie
     fetchMoviesFromAPI();
   }
 });
-
+//it takes the event object as a parameter, which contains information abou the event
+//the event serves a s an object of the eventListener
 searchInput.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     searchMovies();
@@ -69,7 +75,7 @@ loadMoreButton.addEventListener("click", (event) => {
   page += 1;
   event.preventDefault();
 
-  if (searchQuery != null) {
+  if (searchQuery !== null) {
     const queryUrl = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&page=${page}&query=${encodeURIComponent(
       searchQuery
     )}`;
@@ -80,11 +86,15 @@ loadMoreButton.addEventListener("click", (event) => {
 });
 
 const searchMovies = () => {
-  if (searchInput.value != "") {
-    searchQuery = searchInput.value;
-    movieGrid.innerHTML = "";
-    sectionTitle.innerText = "Search Results";
-    page = 1;
+  //assign it to a constant variable  using the const keyword
+
+  if (searchInput !== "") {
+    //if the current value set by the user is not equal to null
+    searchQuery = searchInput.value.trim(); // the searchQuery is equal to the value entered by the user
+    movieGrid.innerHTML = ""; //sets the html content of the movie grid to an empty string
+    sectionTitle.innerText = "Search Results"; //changing the element(now playing) to search results once a search has been made
+    page = 1; //this line sets the value of the page variable to 1 indictes that
+    //the search rresult will start from 1
 
     const queryUrl = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&page=${page}&query=${encodeURIComponent(
       searchQuery
@@ -95,7 +105,7 @@ const searchMovies = () => {
 
 const fetchMoviesFromAPI = async (url) => {
   const defaultUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${page}`;
-  if (!url) {
+  if (url === null) {
     sectionTitle.innerText = "Now Playing";
   }
 
@@ -119,8 +129,7 @@ const fetchMoviesFromAPI = async (url) => {
 };
 
 const getGenre = (genreId) => {
-  const genre = genres.find((genre) => genre.id === genreId);
-  return genre ? genre.name : "Unknown";
+  return genres[genreId] || "Unknown";
 };
 
 /**
@@ -184,7 +193,7 @@ function showMovieDetails(movie) {
   modalTitle.innerText = movie.title;
   modalOverview.innerText = movie.overview;
 
-  if (movie.backdrop_path != null) {
+  if (movie.backdrop_path !== null) {
     movieBackdrop.classList.remove("no-poster");
     movieBackdrop.src = `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
   } else {
@@ -201,11 +210,11 @@ function showMovieDetails(movie) {
     }
   });
 
-  let releaseDate = movie.release_date ? movie.release_date + " | " : "";
-  genres = genres != "" ? genres + " | " : "";
-  let rating = movie.vote_average ? "⭐️ " + movie.vote_average + " | " : "";
+  let releaseDate = movie.release_date ? movie.release_date : "";
+  genres = genres != "" ? genres : "";
+  let rating = movie.vote_average ? "⭐️ " + movie.vote_average : "";
 
-  movieDetails.innerText = releaseDate + genres + rating;
+  movieDetails.innerText = [releaseDate, genres, rating].join(" | ");
 
   // Show the modal
   modal.style.display = "block";
@@ -228,5 +237,6 @@ window.addEventListener("load", (event) => {
 
   // When page loads, we want to focus search input
   searchInput.focus();
+
   fetchMoviesFromAPI();
 });
